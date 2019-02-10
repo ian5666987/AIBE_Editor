@@ -1,0 +1,2170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Extension.Database.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Extension.Database.SqlServer.SQLServerArgument">
+            <summary>
+            Selected and refined column values of INFORMATION_SCHEMA.PARAMETERS table, namely: 
+            SPECIFIC_CATALOG, SPECIFIC_SCHEMA, SPECIFIC_NAME, ORDINAL_POSITION, PARAMETER_MODE, IS_RESULT, PARAMETER_NAME, and DATA_TYPE
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.SpecificCatalog">
+            <summary>
+            The argument's specific catalog. 
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.SpecificSchema">
+            <summary>
+            The argument's specific schema. 
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.SpecificName">
+            <summary>
+            The argument's specific name. 
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.ArgumentName">
+            <summary>
+            The argument's name.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.Position">
+            <summary>
+            The argument's position.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.DataType">
+            <summary>
+            To indicate the equivalent .NET Framework data type of the argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.DbDataTypeString">
+            <summary>
+            To indicate the original DB data type of the argument in string.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.DbDataType">
+            <summary>
+            To indicate the original DB data type of the argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.IsIn">
+            <summary>
+            To indicate if the argument is an in argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.IsOut">
+            <summary>
+            To indicate if the argument is an out argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.IsInOut">
+            <summary>
+            To indicate if the argument is an in/out argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.IsReturn">
+            <summary>
+            To indicate if the argument is a return argument.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.HasError">
+            <summary>
+            To indicate if the argument has error in its creation.
+            </summary>
+        </member>
+        <member name="P:Extension.Database.SqlServer.SQLServerArgument.ErrorMessage">
+            <summary>
+            The argument's error message.
+            </summary>
+        </member>
+        <member name="T:Extension.Database.SqlServer.SQLServerHandler">
+            <summary>
+            Handler for basic SQL Server database operations using System.Data.SqlClient.
+            </summary>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScript(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To execute SQL script using non-query execution. Useful for non-query and non-data insertion (UPDATE and DELETE).
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScript(System.String,System.String)">
+            <summary>
+            To execute SQL script using non-query execution. Useful for non-query and non-data insertion (UPDATE and DELETE).
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScript(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute SQL script using non-query execution. Useful for non-query and non-data insertion (UPDATE and DELETE).
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScript(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute SQL script using non-query execution. Useful for non-query and non-data insertion (UPDATE and DELETE).
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To execute SQL script using scalar execution. Useful for data insertion (INSERT INTO).
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using scalar execution.</param>
+            <returns>generated object (generated Id when used for data insertion).</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScalar(System.String,System.String)">
+            <summary>
+            To execute SQL script using scalar execution. Useful for data insertion (INSERT INTO).
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using scalar execution.</param>
+            <returns>generated object (generated Id when used for data insertion).</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute SQL script using scalar execution. Useful for data insertion (INSERT INTO).
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using scalar execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>generated object (generated Id when used for data insertion).</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScalar(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute SQL script using scalar execution. Useful for data insertion (INSERT INTO).
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using scalar execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>generated object (generated Id when used for data insertion).</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.String,System.String)">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed using non-query execution.</param>
+            <param name="pars">list of SQL parameters.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.Data.SqlClient.SqlConnection,Extension.Models.BaseScriptModel)">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="scriptModel">basic script model to be executed.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteProcedureOrFunction(System.String,Extension.Models.BaseScriptModel)">
+            <summary>
+            To execute a Stored Procedure or a Function using non-query execution.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="scriptModel">basic script model to be executed.</param>
+            <returns>generated integer.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedures(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get the list of Stored Procedures available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Stored Procedures.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedures(System.String,System.String)">
+            <summary>
+            To get the list of Stored Procedures available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Stored Procedures.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedureParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Stored Procedure available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="procedureName">the Stored Procedure name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Stored Procedure.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedureParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Stored Procedure available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="procedureName">the Stored Procedure name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Stored Procedure.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedureParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Stored Procedure available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="procedureName">the Stored Procedure name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Stored Procedure.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProcedureParameters(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Stored Procedure available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="procedureName">the Stored Procedure name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Stored Procedure.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective parameter names and parameter data types from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndParameters(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective parameter names and parameter data types from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective parameter names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective parameter names from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndArguments(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective arguments from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetProceduresAndArguments(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and their respective arguments from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Stored Procedures and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctions(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get the list of Functions available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Functions.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctions(System.String,System.String)">
+            <summary>
+            To get the list of Functions available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Functions.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Function available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="functionName">the Function name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Function available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="functionName">the Function name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Function available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="functionName">the Function name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionParameters(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Function available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="functionName">the Function name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective parameter names and parameter data types from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Functions and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndParameters(System.String,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective parameter names and parameter data types from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Functions and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective parameter names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Functions and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective parameter names from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Functions and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndArguments(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective arguments from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Functions and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFunctionsAndArguments(System.String,System.String,System.String)">
+            <summary>
+            To get list of Functions and their respective arguments from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Functions and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfs(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get the list of Stored Procedures or Functions available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Stored Procedures or Functions.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfs(System.String,System.String)">
+            <summary>
+            To get the list of Stored Procedures or Functions available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of Stored Procedures or Functions.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Stored Procedure or a Function available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="spfName">the Stored Procedure or Function name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Stored Procedure or Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names of a Stored Procedure or a Function available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="spfName">the Stored Procedure or Function name to get the parameter names from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names of the given Stored Procedure or Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Stored Procedure or a Function available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="spfName">the Stored Procedure or Function name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Stored Procedure or Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfParameters(System.String,System.String,System.String)">
+            <summary>
+            To get the list of parameter names and parameter data types of a Stored Procedure or a Function available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="spfName">the Stored Procedure or Function name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of parameter names and parameter data types of the given Stored Procedure or Function.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndParameters(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures or Functions and their respective parameter names and parameter data types from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures or Functions and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndParameters(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures or Functions and their respective parameter names and parameter data types from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures or Functions and their respective parameter names and data types.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndParameterNames(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures or Functions and their respective parameter names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures or Functions and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndParameterNames(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures or Functions and their respective parameter names from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="parameterOrderByClause">the ORDER BY clause to order the sequence of the parameter data retrieved.</param>
+            <returns>The list of Stored Procedures or Functions and their respective parameter names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndArguments(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and Functions and their respective arguments from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Stored Procedures and Functions and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSpfsAndArguments(System.String,System.String,System.String)">
+            <summary>
+            To get list of Stored Procedures and Functions and their respective arguments from a database connection.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="argumentOrderByClause">the ORDER BY clause to order the sequence of the argument data retrieved.</param>
+            <returns>The list of Stored Procedures and Functions and their respective arguments.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetArguments(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the list of arguments of an Object available in the Database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="objectName">the Object name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of arguments of the given Object.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetArguments(System.String,System.String,System.String)">
+            <summary>
+            To get the list of arguments of an Object available in the Database.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="objectName">the Object name.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>list of arguments of the given Object.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScriptExtractDateTimeWithAddition(System.Data.SqlClient.SqlConnection,System.String,System.Int32)">
+            <summary>
+            To execute SQL script to extract DateTime value and to return the DateTime with additional value in seconds.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed. It is a select script, getting (ideally) only one-row-on-column DateTime value from the database</param>
+            <param name="addVal">the additional values to be added in seconds.</param>
+            <returns>DateTime value from database with additional addVal second(s). Returns null when failed to parse the database value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScriptExtractDateTimeWithAddition(System.String,System.String,System.Int32)">
+            <summary>
+            To execute SQL script to extract DateTime value and to return the DateTime with additional value in seconds.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed. It is a select script, getting (ideally) only one-row-on-column DateTime value from the database</param>
+            <param name="addVal">the additional values to be added in seconds.</param>
+            <returns>DateTime value from database with additional addVal second(s). Returns null when failed to parse the database value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScriptExtractDecimalWithAddition(System.Data.SqlClient.SqlConnection,System.String,System.Decimal)">
+            <summary>
+            To execute SQL script to extract Decimal value and to return the Decimal with additional value.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="script">the script to be executed. It is a select script, getting (ideally) only one-row-on-column Decimal value from the database</param>
+            <param name="addVal">the additional values to be.</param>
+            <returns>Decimal value from database with additional addVal. Returns null when failed to parse the database value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteScriptExtractDecimalWithAddition(System.String,System.String,System.Decimal)">
+            <summary>
+            To execute SQL script to extract Decimal value and to return the Decimal with additional value.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="script">the script to be executed. It is a select script, getting (ideally) only one-row-on-column Decimal value from the database</param>
+            <param name="addVal">the additional values to be.</param>
+            <returns>Decimal value from database with additional addVal. Returns null when failed to parse the database value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetAggregatedValues(System.Data.SqlClient.SqlConnection,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">
+            <summary>
+            To get the "best" aggregate value from multiple tables. Supported aggregate functions: MAX, MIN.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableColumnNames">table-column pairs to get the aggregate value from, used to get aggregate values from multiple tables.</param>
+            <param name="aggFunction">the aggregate function applied: MAX or MIN.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the "best" aggregated value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetAggregatedValues(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.String,System.String)">
+            <summary>
+            To get the "best" aggregate value from multiple tables. Supported aggregate functions: MAX, MIN.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableColumnNames">table-column pairs to get the aggregate value from, used to get aggregate values from multiple tables.</param>
+            <param name="aggFunction">the aggregate function applied: MAX or MIN.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the "best" aggregated value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetAggregatedValue(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get an aggregate value of a single column from a single table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the column from.</param>
+            <param name="columnName">the column name to get the aggregated values from.</param>
+            <param name="aggFunction">the aggregate function applied.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the aggregated value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetAggregatedValue(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get an aggregate value of a single column from a single table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the column from.</param>
+            <param name="columnName">the column name to get the aggregated values from.</param>
+            <param name="aggFunction">the aggregate function applied.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the aggregated value.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteBaseScripts(System.Data.SqlClient.SqlConnection,System.Collections.Generic.List{Extension.Models.BaseScriptModel})">
+            <summary>
+            To execute series of basic scripts (single insertion, update, or deletion) in a single transaction.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="scripts">collection of basic scripts to be executed.</param>
+            <returns>list of number of affected rows, it should all be 1 for successful transaction using basic scripts.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ExecuteBaseScripts(System.String,System.Collections.Generic.List{Extension.Models.BaseScriptModel})">
+            <summary>
+            To execute series of basic scripts (single insertion, update, or deletion) in a single transaction.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="scripts">collection of basic scripts to be executed.</param>
+            <returns>list of number of affected rows, it should all be 1 for successful transaction using basic scripts.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.StartTransaction(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            To start a transaction
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.EndTransaction(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            To end a transaction
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.Rollback(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            To roleback an on-going transaction
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.CommitAndRestartTransaction(System.Data.SqlClient.SqlConnection)">
+            <summary>
+            To commit an on-going transaction and then start a new transaction
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ClearTable(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To clear a data from a table completely.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to be cleared.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.ClearTable(System.String,System.String,System.String)">
+            <summary>
+            To clear a data from a table completely.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to be cleared.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.DeleteFromTableWhere(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String)">
+            <summary>
+            To delete data from a table given a where clause.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the name of the table whose data is to be deleted from.</param>
+            <param name="whereClause">where clause to qualify the deletion.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.DeleteFromTableWhere(System.String,System.String,System.String,System.String)">
+            <summary>
+            To delete data from a table given a where clause.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the name of the table whose data is to be deleted from.</param>
+            <param name="whereClause">where clause to qualify the deletion.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows affected.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.Insert(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            To insert an item to the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the insertion.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>object returned by execute scalar of the insertion script, usually an id.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.Insert(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            To insert an item to the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the insertion.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>object returned by execute scalar of the insertion script, usually an id.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.Update(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Object,System.String)">
+            <summary>
+            To update table item(s) qualified by single idName and single idValue.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the update.</param>
+            <param name="idName">the single column used as the qualifier for the update.</param>
+            <param name="idValue">the value of the idName column used as the qualifier for the update.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of affected in the table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.Update(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Object,System.String)">
+            <summary>
+            To update table item(s) qualified by single idName and single idValue.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the update.</param>
+            <param name="idName">the single column used as the qualifier for the update.</param>
+            <param name="idValue">the value of the idName column used as the qualifier for the update.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of affected in the table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateWhere(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.String)">
+            <summary>
+            To update table item(s) which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the update.</param>
+            <param name="whereClause">the WHERE clause condition for the update.</param>
+            <param name="wherePars">the parameters of the where clause.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of affected in the table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateWhere(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.String)">
+            <summary>
+            To update table item(s) which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnAndValues">the dictionary of names and values used for the update.</param>
+            <param name="whereClause">the WHERE clause condition for the update.</param>
+            <param name="wherePars">the parameters of the where clause.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of affected in the table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCount(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCount(System.String,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountWhere(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountWhere(System.String,System.String,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.Object,System.Boolean,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountFilterBy(System.String,System.String,System.Object,System.Boolean,System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetCountFilterByParameters(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String)">
+            <summary>
+            To get the number of rows of the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>number of rows of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetColumns(System.Data.SqlClient.SqlConnection,System.String,System.String)">
+            <summary>
+            To get the columns (list of DataColumn) of the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>list of DataColumns of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetColumns(System.String,System.String,System.String)">
+            <summary>
+            To get the columns (list of DataColumn) of the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>list of DataColumns of the retrieved table.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTable(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTable(System.String,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableWhere(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableWhere(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableFilterBy(System.String,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullDataTableFilterByParameters(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get complete data (all columns retrieved) from the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTable(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTable(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableWhere(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableWhere(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableFilterBy(System.String,System.String,System.Collections.Generic.List{System.String},System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialDataTableFilterByParameters(System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get selected columns' data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRow(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRow(System.String,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowWhere(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowWhere(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowFilterBy(System.String,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFullFirstDataRowFilterByParameters(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of complete data (all columns retrieved) from the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRow(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRow(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowWhere(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowWhere(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowFilterBy(System.String,System.String,System.Collections.Generic.List{System.String},System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetPartialFirstDataRowFilterByParameters(System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get first data row of selected columns' data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnNames">the selected columns to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the first DataRow query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumn(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumn(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnWhere(System.Data.SqlClient.SqlConnection,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table which satisfy the WHERE clause condition.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnWhere(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table which satisfy the WHERE clause condition.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="whereClause">the WHERE clause to filter the data queried.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnFilterBy(System.Data.SqlClient.SqlConnection,System.String,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table filtered by default method using filterObj filter object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnFilterBy(System.String,System.String,System.String,System.Object,System.Boolean,System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table filtered by default method using filterObj filter object.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="filterObj">the filter object used to filter the data queried.</param>
+            <param name="useNull">to specify if null value in the filterObj is interpreted as equal to NULL or is skipped.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnFilterByParameters(System.Data.SqlClient.SqlConnection,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetSingleColumnFilterByParameters(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.String)">
+            <summary>
+            To get selected column's data from the specified table filtered by default method using a collection of filter column name-value pairs.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="tableName">the table name to get the data from.</param>
+            <param name="columnName">the selected column to be queried from the data table.</param>
+            <param name="filters">the collection of filter column name-value pairs used to filter the data queried.</param>
+            <param name="addWhereClause">the additional WHERE clause to filter the result further.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <param name="use">to specify database to be used other than what has been provided by the current connection.</param>
+            <returns>the list of object query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetFirstRow(System.Data.DataTable)">
+            <summary>
+            To get the first row values of a DataTable, returned in simple dictionary format.
+            </summary>
+            <param name="table">The data DataTable to get the first row from.</param>
+            <returns>The first row data result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.Data.SqlClient.SqlConnection,System.String,System.Data.SqlClient.SqlParameter)">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="par">the parameter of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.String,System.String)">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.String,System.String,System.Data.SqlClient.SqlParameter)">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="par">the parameter of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataTable(System.String,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.Data.SqlClient.SqlConnection,System.String,System.Data.SqlClient.SqlParameter)">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="par">the parameter of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.String,System.String)">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.String,System.String,System.Data.SqlClient.SqlParameter)">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="par">the parameter of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDataSet(System.String,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.getDataTable(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.getDataTable(System.String,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataTable based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataTable query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.getDataSet(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.getDataSet(System.String,System.String,System.Collections.Generic.IEnumerable{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            To retrieve DataSet based on generic SELECT SQL query.
+            </summary>
+            <param name="connectionString">the string used to establish connection with the database.</param>
+            <param name="selectSqlQuery">the generic SELECT SQL query to be executed.</param>
+            <param name="pars">the parameters of the query string.</param>
+            <returns>the DataSet query result.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.InsertObject``1(System.Data.SqlClient.SqlConnection,System.String,``0,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To insert an object to the database given proper table name and object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.InsertObject``1(System.String,System.String,``0,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To insert an object to the database given proper table name and object.
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.InsertObjects``1(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To insert list of objects to the database given proper table name and objects.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the target table for the objects to be inserted into.</param>
+            <param name="objs">the list of objects to be inserted.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.InsertObjects``1(System.String,System.String,System.Collections.Generic.List{``0},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To insert list of objects to the database given proper table name and objects.
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="tableName">the target table for the objects to be inserted into.</param>
+            <param name="objs">the list of objects to be inserted.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObject``1(System.Data.SqlClient.SqlConnection,System.String,``0,System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update an object in the database given proper table name and object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the UPDATE script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObject``1(System.String,System.String,``0,System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update an object in the database given proper table name and object.
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the UPDATE script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObject``1(System.Data.SqlClient.SqlConnection,System.String,``0,System.String,System.String,System.Boolean,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update an object in the database given proper table name and object.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="idValue">the id value used to distinguish the updated object from the others.</param>
+            <param name="idValueIsString">to indicate if data type of the id is a string.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the UPDATE script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObject``1(System.String,System.String,``0,System.String,System.String,System.Boolean,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update an object in the database given proper table name and object.
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="tableName">the target table for the object to be inserted into.</param>
+            <param name="obj">the object to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="idValue">the id value used to distinguish the updated object from the others.</param>
+            <param name="idValueIsString">to indicate if data type of the id is a string.</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>result of scalar execution of the UPDATE script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObjects``1(System.Data.SqlClient.SqlConnection,System.String,System.Collections.Generic.List{``0},System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update list of objects to the database given proper table name and objects.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="tableName">the target table for the objects to be inserted into.</param>
+            <param name="objs">the list of objects to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.UpdateObjects``1(System.String,System.String,System.Collections.Generic.List{``0},System.String,System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To update list of objects to the database given proper table name and objects.
+            </summary>
+            <typeparam name="T">generic type parameter.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="tableName">the target table for the objects to be inserted into.</param>
+            <param name="objs">the list of objects to be inserted.</param>
+            <param name="idName">the id name for this object, typically like "Id" or "Name".</param>
+            <param name="excludedPropertyNames">the properties to be excluded from insertion to the database.</param>
+            <param name="dateTimeFormat">the date time format used for DateTime data type.</param>
+            <param name="dateTimeFormatMap">the date time format used for DateTime data type per column.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.TransferTable``2(System.Data.SqlClient.SqlConnection,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To transfer the data from one table to another by using C# classes' instances as intermediary objects.
+            The tables must be located in the same database.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <typeparam name="TSource">the generic data type to represent the source table.</typeparam>
+            <typeparam name="TDest">the generic data type to represent the destination table.</typeparam>
+            <param name="conn">the already opened database connection.</param>
+            <param name="sourceTableName">the name of the source table of the transfer.</param>
+            <param name="destTableName">the name of the destination table of the transfer.</param>
+            <param name="sourceToDestNameMapping">the source to destination class properties' name mapping (from TSource to TDest).</param>
+            <param name="sourceExcludedPropertyNames">the names of the properties of source class whose values are NOT transferred to the destination class' instance.</param>
+            <param name="destExcludedPropertyNames">the names of the properties of the destination class whose values are NOT transferred to the destination database row entry (likely is the Id of the entry).</param>
+            <param name="destDateTimeFormat">the single (default) custom DateTimeFormat to be used in inserting the DateTime columns to the destination database.</param>
+            <param name="destDateTimeFormatMap">the column-by-column map of custom DateTimeFormats to be used in inserting the DateTime columns to the destination database.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.TransferTable``2(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To transfer the data from one table to another by using C# classes' instances as intermediary objects.
+            The tables must be located in the same database.
+            </summary>
+            <typeparam name="TSource">the generic data type to represent the source table.</typeparam>
+            <typeparam name="TDest">the generic data type to represent the destination table.</typeparam>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="sourceTableName">the name of the source table of the transfer.</param>
+            <param name="destTableName">the name of the destination table of the transfer.</param>
+            <param name="sourceToDestNameMapping">the source to destination class properties' name mapping (from TSource to TDest).</param>
+            <param name="sourceExcludedPropertyNames">the names of the properties of source class whose values are NOT transferred to the destination class' instance.</param>
+            <param name="destExcludedPropertyNames">the names of the properties of the destination class whose values are NOT transferred to the destination database row entry (likely is the Id of the entry).</param>
+            <param name="destDateTimeFormat">the single (default) custom DateTimeFormat to be used in inserting the DateTime columns to the destination database.</param>
+            <param name="destDateTimeFormatMap">the column-by-column map of custom DateTimeFormats to be used in inserting the DateTime columns to the destination database.</param>
+            <returns>results of scalar execution of the INSERT INTO script.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndViews(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables and views from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndViews(System.String,System.String)">
+            <summary>
+            To get list of tables and views from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTables(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTables(System.String,System.String)">
+            <summary>
+            To get list of tables from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViews(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of views from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViews(System.String,System.String)">
+            <summary>
+            To get list of views from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesViewsAndColumns(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables and views and their respective data columns from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTableViewsAndColumns(System.String,System.String)">
+            <summary>
+            To get list of tables and views and their respective data columns from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndColumns(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables and their respective data columns from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndColumns(System.String,System.String)">
+            <summary>
+            To get list of tables and their respective data columns from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViewsAndColumns(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of views and their respective data columns from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViewsAndColumns(System.String,System.String)">
+            <summary>
+            To get list of views and their respective data columns from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views and their respective data columns .</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesViewsAndColumnNames(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables and views and their respective column names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesViewsAndColumnNames(System.String,System.String)">
+            <summary>
+            To get list of tables and views and their respective column names from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and views and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndColumnNames(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of tables and their respective column names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetTablesAndColumnNames(System.String,System.String)">
+            <summary>
+            To get list of tables and their respective column names from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of tables and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViewsAndColumnNames(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            To get list of views and their respective column names from a database connection.
+            <para>
+            This method does not open or close database connection. The connection must already be opened for the method to work.
+            </para>
+            </summary>
+            <param name="conn">the already opened database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetViewsAndColumnNames(System.String,System.String)">
+            <summary>
+            To get list of views and their respective column names from a database connection.
+            </summary>
+            <param name="connectionString">the SQL connection string to open the database connection.</param>
+            <param name="orderByClause">the ORDER BY clause to order the sequence of the data retrieved.</param>
+            <returns>The list of views and their respective column names.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.HasEquivalentDataType(System.String)">
+            <summary>
+            To check if equivalent .NET data type could be obtained from SQL Server's data-type string
+            <para>
+            Obtained from: https://msdn.microsoft.com/en-us/library/cc716729(v=vs.100).aspx and https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
+            </para>
+            Available string: BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Int, Image, Money, NChar, NText, NVarChar, Numeric, Real, RowVersion, Timestamp, SmallDateTime, SmallInt, SmallMoney, Sql_Variant, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar
+            </summary>
+            <param name="dbDataTypeString">the database's data type in string.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetEquivalentDataType(System.String)">
+            <summary>
+            To get equivalent .NET data type from SQL Server's data-type string
+            <para>
+            Obtained from: https://msdn.microsoft.com/en-us/library/cc716729(v=vs.100).aspx and https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
+            </para>
+            Available string: BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Int, Image, Money, NChar, NText, NVarChar, Numeric, Real, RowVersion, Timestamp, SmallDateTime, SmallInt, SmallMoney, Sql_Variant, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar
+            </summary>
+            <param name="dbDataTypeString">the database's data type in string.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.HasEquivalentDataType(System.Data.SqlDbType)">
+            <summary>
+            To check if equivalent .NET data type could be obtained from SQL Server's data-type
+            <para>
+            Obtained from: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
+            </para>
+            Available type(s): BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Image, Int, Money, NChar, NText, NVarChar, Real, SmallDateTime, SmallInt, SmallMoney, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar, Variant
+            <para>
+            Unavailable type(s): Structured, Udt, Xml
+            </para>
+            </summary>
+            <param name="dbType">the database's data type.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetEquivalentDataType(System.Data.SqlDbType)">
+            <summary>
+            To get equivalent .NET data type from SQL Server's data-type
+            <para>
+            Obtained from: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-data-type-mappings
+            </para>
+            Available type(s): BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Image, Int, Money, NChar, NText, NVarChar, Real, SmallDateTime, SmallInt, SmallMoney, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar, Variant
+            <para>
+            Unavailable type(s): Structured, Udt, Xml
+            </para>
+            </summary>
+            <param name="dbType">the database's data type.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.HasDbDataType(System.String)">
+            <summary>
+            To check if equivalent SQL Server data type could be obtained from SQL Server's data-type string
+            <para>
+            Available string: BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Int, Image, Money, NChar, NText, NVarChar, Numeric, Real, Timestamp, SmallDateTime, SmallInt, SmallMoney, Sql_Variant, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar
+            </para>
+            </summary>
+            <param name="dbDataTypeString">the database's data type in string.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetDbDataType(System.String)">
+            <summary>
+            To get equivalent SQL Server data type from SQL Server's data-type string
+            <para>
+            Available string: BigInt, Binary, Bit, Char, Date, DateTime, DateTime2, DateTimeOffset, Decimal, Float, Int, Image, Money, NChar, NText, NVarChar, Numeric, Real, Timestamp, SmallDateTime, SmallInt, SmallMoney, Sql_Variant, Text, Time, Timestamp, TinyInt, UniqueIdentifier, VarBinary, VarChar
+            </para>
+            </summary>
+            <param name="dbDataTypeString">the database's data type in string.</param>
+            <returns>Equivalent .NET data type.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetEquivalentData(System.Object,System.Data.SqlDbType,System.String)">
+            <summary>
+            To get equivalent .NET data from SQL Server's data
+            </summary>
+            <param name="input">the database's data object.</param>
+            <param name="dbType">the database's data type.</param>
+            <param name="dbDtFormat">the database's data's date-time format (only applied for date/date-time data).</param>
+            <returns>Equivalent .NET data.</returns>
+        </member>
+        <member name="M:Extension.Database.SqlServer.SQLServerHandler.GetEquivalentDataCollection(System.Object,System.Data.SqlDbType,System.String)">
+            <summary>
+            To get equivalent .NET data collection from SQL Server's data collection
+            </summary>
+            <param name="input">the database's data object (collection).</param>
+            <param name="dbType">the database's data type.</param>
+            <param name="dbDtFormat">the database's data's date-time format (only applied for date/date-time data).</param>
+            <returns>Equivalent .NET data collection.</returns>
+        </member>
+    </members>
+</doc>

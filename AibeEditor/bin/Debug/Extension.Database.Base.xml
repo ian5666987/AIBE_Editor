@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Extension.Database.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Extension.Database.Base.DBArgument">
+            <summary>
+            Selected and refined column values of parameters info table. Different from database to database 
+            </summary>
+        </member>
+    </members>
+</doc>

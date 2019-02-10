@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31124CBC-3177-4778-94D6-BD1A1BE756FF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AibeEditor</RootNamespace>
+    <AssemblyName>AibeEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>grammar-check.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aibe">
+      <HintPath>..\..\..\Common\Aibe\Aibe\bin\Release\Aibe.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Checker">
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Checker\bin\Release\Extension.Checker.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Controls">
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Control\bin\Release\Extension.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Database.SqlServer, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Database.SqlServer\bin\Release\Extension.Database.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Extractor, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Extractor\bin\Release\Extension.Extractor.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Models\bin\Release\Extension.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.String">
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\String\bin\Release\Extension.String.dll</HintPath>
+    </Reference>
+    <Reference Include="Extension.Versioning">
+      <HintPath>..\..\..\..\VS2015\Desktop\DLL\Extension\Versioning\bin\Release\Extension.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AibeEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AibeEditorForm.Designer.cs">
+      <DependentUpon>AibeEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Docs\AibeParagraph.cs" />
+    <Compile Include="Models\Docs\AibeParagraphState.cs" />
+    <Compile Include="Models\Docs\AibeColoringSet.cs" />
+    <Compile Include="Models\Docs\AibeTypingContext.cs" />
+    <Compile Include="Models\Docs\AibeStreamProcessResult.cs" />
+    <Compile Include="Models\Docs\AibeSection.cs" />
+    <Compile Include="Models\Docs\AibeDocument.cs" />
+    <Compile Include="Models\Tests\Columns\ActionInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\AggregationStatementInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ActionProcedureInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ActionTriggerInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\AffixColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\AttachmentInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ForeignInfoColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\AutoGeneratedColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ColoringInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ColoringTableValueRefInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\CustomDateTimeFormatInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\DropDownInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\DropDownItemInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\EmailMakerFullInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\EmailMakerInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\EmailMakerTriggerInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ExclusionInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\HistoryInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\HistoryTriggerInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\InclusionInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ListColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ListColumnItemTest.cs" />
+    <Compile Include="Models\Tests\Columns\ListColumnSubItemTest.cs" />
+    <Compile Include="Models\Tests\Columns\NumberLimitColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\OrderByInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\PictureColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\PrefilledColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\RegexBaseInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\RegexCheckedColumnExampleInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\RegexCheckedColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ScriptColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\ScriptConstructorColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\TableValueRefInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\TextFieldColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\TimeStampColumnInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\TimeStampColumnRowActionInfoTest.cs" />
+    <Compile Include="Models\Tests\Columns\UserRelatedFilterInfo.cs" />
+    <Compile Include="Models\Tests\MetaInfoTest.cs" />
+    <Compile Include="Models\Tests\BaseMetaItemTest.cs" />
+    <Compile Include="CheckerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckerPanel.Designer.cs">
+      <DependentUpon>CheckerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tests\MetaLogicTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Models\Tests\AibeSyntaxCheckerLogic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AibeEditorForm.resx">
+      <DependentUpon>AibeEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckerPanel.resx">
+      <DependentUpon>CheckerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="grammar-check.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
