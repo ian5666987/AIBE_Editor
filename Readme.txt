@@ -8,7 +8,7 @@ AIBE Editor a solution created by me to help to write AIBE scripts with minimal 
 *) More help available in the application itself
 *) See my AIBE project repository (https://github.com/ian5666987/AIBE) for more information.
 
-AIBE script example, for table called CFG_CUS_INF in the database (note ///--- indicates the new line in AIBE script):
+AIBE script example, for table called CFG_CUS_INF in the database (note: ///--- indicates the new line in AIBE script):
 
 ///---TABLE: CFG_CUS_INF
 ///---DisplayName Customer Basic Information
